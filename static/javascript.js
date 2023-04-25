@@ -14,8 +14,16 @@ function get_answer(){
     .done(function(result){
         // hint 안에 값 넣기
         document.getElementById("hint").innerHTML = ""
-        var lyrics = document.createTextNode(result.hint);
-        document.getElementById("hint").appendChild(lyrics);
+        
+        for (i in result.hint){
+            var lyrics_content = document.createTextNode(result.hint[i]);
+            const lyrics_div = document.createElement('div')
+            lyrics_div.appendChild(lyrics_content)
+            document.getElementById("hint").appendChild(lyrics_div);
+        }
+        
+        
+
         
         // answer 값 세팅
         answer = result.answer;
@@ -111,7 +119,7 @@ $(function() {
             question_n += 1;
             if (question_n > 10){
                 alert("10개 중 "+answer_n+"개를 맞추셨습니다!")
-                question_n = 0;
+                question_n = 1;
                 answer_n = 0;
             }
             
@@ -124,7 +132,7 @@ $(function() {
             question_n += 1;
             if (question_n > 10){
                 alert("10개 중 "+answer_n+"개를 맞추셨습니다!")
-                question_n = 0;
+                question_n = 1;
                 answer_n = 0;
             }
             document.getElementById("question_n").innerHTML = question_n.toString();

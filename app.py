@@ -3,6 +3,7 @@ import pandas as pd
 import random
 import sqlite3
 from hangeul_jamo_splitter import *
+from socket import gethostname
 
 def name_split(name):
     res = []
@@ -14,10 +15,11 @@ def name_split(name):
 def extract_lyrics(song_name, lyrics_df):
     temp_df = lyrics_df[lyrics_df['곡명']==song_name]
     temp_df = temp_df[temp_df['제목점수'] != 1]
-    temp_df = temp_df[temp_df['후렴점수'] == 1] # 랩이나 verse
+    # temp_df = temp_df[temp_df['후렴점수'] == 1] # 랩이나 verse
 
-    freq_max = temp_df.max()['최고빈도점수']
-    random_lyrics = random.sample(list(temp_df[temp_df['최고빈도점수'] == freq_max]['라인'].values), 1)[0]
+    # freq_max = temp_df.max()['최고빈도점수']
+    # random_lyrics = random.sample(list(temp_df[temp_df['최고빈도점수'] == freq_max]['라인'].values), 1)[0]
+    random_lyrics = random.sample(list(temp_df['라인'].values),2)
 
     return random_lyrics
 
@@ -73,4 +75,5 @@ def search():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if 'liveconsole' not in gethostname():
+        app.run(debug=True)
