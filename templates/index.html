@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>BTS 가사 퀴즈</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="/static/javascript.js"></script>
+    
+  </head>
+
+  <body>
+    <h1 class = "welcome-header">BTS 가사 퀴즈</h1>
+    <div class = "status">
+        <div>정답 수:</div>&nbsp;<div id = "answer_n"></div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div>문제 수: </div>&nbsp;<div id = "question_n"></div>&nbsp;<span>/ 10</span>
+    </div>
+    <div class = 'input welcome-header'>
+        <h2 class = "welcome-header">곡명을 입력하세요:</h2>
+    </div>
+
+    <div class = "search_wrapper">
+      <div class = "mid_wrapper">
+        <input type="text" id = "name" autocomplete="off">
+        <input type="button" id = "submit-button" value="정답 제출"> 
+        <input type="button" id = "restart-button" value="재시작"> 
+      </div>
+      <div id="suggestion_box" class = "invisible">
+        <div id = "suggested-items"></div>
+      </div>
+    </div>
+        
+    <!-- form 제출 시 ajax -->
+    <h3 class = "welcome-header">가사로 곡명을 유추하세요.</h3>
+    <h3 class = "welcome-header">가사 힌트를 보여드립니다.</h3>
+
+    <div id = "hint"></div>
+
+  </body>
+
+</html>
